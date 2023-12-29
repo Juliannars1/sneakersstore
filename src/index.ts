@@ -1,0 +1,11 @@
+import "dotenv/config";
+import cors from "cors";
+import express from "express";
+import { router } from "./routes";
+import db from "./config/mongo";
+const server = express();
+server.use(express.json());
+server.use(cors());
+server.use(router);
+db().then(() => console.log("Conexion Ready"));
+export default server;
